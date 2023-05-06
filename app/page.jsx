@@ -1,4 +1,5 @@
 import Image from "next/image"
+import ColombiaFlag from "../assets/colombia.png"
 
 export const metadata = {
   title: "Dolar hoy"
@@ -8,7 +9,7 @@ export default function Home() {
   return (
     <main className="h-screen  bg-slate-100 flex justify-center">
       <section
-        className="flex flex-col gap-5 w-11/12 bg-red-600 justify-center items-center py-4 h-full"
+        className="flex flex-col gap-5 w-11/12 justify-center items-center py-4 h-full"
       >
 
         <div
@@ -25,19 +26,19 @@ export default function Home() {
             className="w-[90%] py-1"
           >
             <Image
-              src=""
+              src={ColombiaFlag}
               alt="Bander Colombia"
               width={40}
               height={40}
-              className="rounded-full bg-black"
+              className="rounded-full"
             />
           </div>
 
-          <p className="bg-green-400 text-white w-[20%] rounded-md px-1" >1 USD</p>
+          <p className="bg-green-400 text-white w-[60px] rounded-md px-1" >1 USD</p>
 
-          <h1 className="text-slate-800 w-[90%] text-center text-6xl font-semibold mb-3" >5.000</h1>
+          <h1 className="text-slate-800 w-[90%] text-center text-6xl font-semibold mb-3 lg:text-8xl" >5.000</h1>
 
-          <p className="text-slate-800 italic text-sm" >
+          <p className="text-slate-800 italic text-sm lg:w-[80%] text-center self-center" >
             * Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Sit perspiciatis et rerum molestias aut voluptatem consequuntur vitae minus optio nulla a ipsa quae architecto ut eos,
             repudiandae consequatur nam quibusdam?
@@ -49,7 +50,6 @@ export default function Home() {
           className="
             h-[55%] w-full 
             flex flex-col justify-center gap-4 
-            bg-orange-300
             md:w-[80%] md:flex-row
             lg:w-[75%]  
           "
