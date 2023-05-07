@@ -22,7 +22,6 @@ function CardCalculator() {
                     alt="change logo"
                     width={35}
                     height={35}
-                    className="cursor-pointer"
                 />
             </div>
             <div>
