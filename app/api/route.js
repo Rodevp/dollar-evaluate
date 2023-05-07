@@ -13,10 +13,8 @@ export async function GET() {
 
     const valueDollar = scrap('span.exchange-rate')
 
-    console.log('value -> ', valueDollar.text())
-
     return NextResponse.json({
-        message: "holi",
+        message: "value dollar",
         value: valueDollar.text()
     })
 
