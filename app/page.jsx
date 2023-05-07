@@ -1,5 +1,6 @@
 
 import CardCalculator from "@/components/CardCalculator"
+import CardCharts from "@/components/CardCharts"
 import CardDollar from "@/components/CardDollar"
 
 export const metadata = {
@@ -13,7 +14,7 @@ export default function Home() {
         className="flex flex-col gap-5 w-11/12 justify-center items-center py-4 h-full"
       >
 
-      <CardDollar /> 
+        <CardDollar />
 
         <section
           className="
@@ -24,7 +25,7 @@ export default function Home() {
           "
         >
           <CardCalculator />
-         
+          <CardCharts />
         </section>
 
       </section>
