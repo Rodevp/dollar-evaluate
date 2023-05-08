@@ -2,10 +2,9 @@ import Image from "next/image"
 import ColombiaFlag from "../assets/colombia.png"
 import { useCurrentValueDollar } from "@/hooks/useDollar"
 
-function CardDollar() {
+async function CardDollar() {
 
-    const dollarValue = useCurrentValueDollar() 
-
+    const dollarValue = await useCurrentValueDollar() 
 
     return (
         <div

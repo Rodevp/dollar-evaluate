@@ -29,8 +29,13 @@ function CardCalculator() {
 
     }, [])
 
-    console.log(currentMoney, currentDollar, Number(currentDollar))
+    const value = currentDollar.replace('.', '')
+    
+    const resultOperation = Number(currentMoney) * Number(value)
+    
+    const resultConvert = Number(resultOperation).toLocaleString("en", {currency: "COP"}) 
 
+    console.log('intl', resultConvert)
 
     return (
         <div
@@ -39,6 +44,7 @@ function CardCalculator() {
             <div>
                 <input
                     onChange={handleCurrentMoney}
+                    placeholder="Escribe tu valor en dolares: 2000"
                     type="text"
                     className="w-full p-4 text-slate-800 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 "
                 />
@@ -46,7 +52,7 @@ function CardCalculator() {
             <h3
                 className="text-slate-800 text-2xl mb-2"
             >
-               Valor: { '' } USD
+               Valor: { resultConvert } COP
             </h3>
         </div>
     )
