@@ -34,9 +34,9 @@ async function CardDollar() {
             <h1 className="text-slate-800 w-[90%] text-center text-6xl font-semibold mb-3 lg:text-8xl" >{dollarValue}</h1>
 
             <p className="text-slate-800 italic text-sm lg:w-[80%] text-center self-center" >
-                * Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Sit perspiciatis et rerum molestias aut voluptatem consequuntur vitae minus optio nulla a ipsa quae architecto ut eos,
-                repudiandae consequatur nam quibusdam?
+                * Este valor es basado en la TASA REPRESENTATIVA DEL MERCADO (TRM) del banco de la
+                  república nacional de Colombia 🇨🇴. Esto con la intención de ser lo más cercano posible
+                  a la paridad del dólar contra el peso colombiano (COP).
             </p>
 
         </div>

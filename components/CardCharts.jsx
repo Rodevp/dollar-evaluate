@@ -46,7 +46,7 @@ function CardCharts() {
 
     const labels = useMemo(() => {
       return data?.map( value => Number( value?.replace('.', '') ).toLocaleString("en") )
-    }, []) 
+    }, [data]) 
 
     const optionChart = useMemo(() => {
       return {
@@ -65,7 +65,7 @@ function CardCharts() {
 
     const datasetData = useMemo(() => {
       return data?.map( value => Number( value?.replace('.', '') ) )
-    }, [])
+    }, [data])
 
     const dataChart = useMemo(() => {
       return {
@@ -78,7 +78,7 @@ function CardCharts() {
           },
         ],
       }
-    }, [])
+    }, [datasetData])
 
 
     return (
