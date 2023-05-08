@@ -23,6 +23,24 @@ export async function GET() {
     const current = fs.createWriteStream("./app/api/dolarToday.txt")
     current.write(parseDecimal)
     current.end()
+    
+    try {
+
+        const PATH_HISTORY = "./app/api/dollarHistory.txt"
+        
+        const data = fs.readFileSync(PATH_HISTORY, 'utf8');
+        const history = data.split('\n')
+
+        if ( history.length >= 60 ) {
+            fs.truncate(PATH_HISTORY, 0, function() { console.log('done') } )
+        }
+
+    } catch (error) {
+        return NextResponse.json({
+            message: "value dollar",
+            value: '0'
+        })
+    }
 
     return NextResponse.json({
         message: "value dollar",

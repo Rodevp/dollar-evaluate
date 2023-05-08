@@ -4,14 +4,16 @@ import fs from "fs"
 
 export async function GET() {
 
-    const PATH = "./app/api/dolarToday.txt"
+    const PATH = "./app/api/dollarHistory.txt"
 
     try {
-        const data = fs.readFileSync(PATH, 'utf8');
 
+        const data = fs.readFileSync(PATH, 'utf8');
+        const history = data.split('\n')
+        
         return NextResponse.json({
             message: "today value",
-            value: data.toString()
+            value: history
         })
 
     } catch (e) {
