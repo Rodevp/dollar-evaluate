@@ -14,13 +14,19 @@ export async function GET() {
 
     const valueDollar = scrap('span.exchange-rate')
 
-    const writeTxt = fs.createWriteStream("./app/api/dolarToday.txt", { flags: 'a' })
-    writeTxt.write(`${valueDollar.text()}\n`)
+    const parseDecimal = valueDollar.text().replace(',', '.')
+
+    const writeTxt = fs.createWriteStream("./app/api/dollarHistory.txt", { flags: 'a' })
+    writeTxt.write(`${parseDecimal}\n`)
     writeTxt.end()
+
+    const current = fs.createWriteStream("./app/api/dolarToday.txt")
+    current.write(parseDecimal)
+    current.end()
 
     return NextResponse.json({
         message: "value dollar",
-        value: valueDollar.text()
+        value: parseDecimal
     })
 
 }
