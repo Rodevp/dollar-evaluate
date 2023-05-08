@@ -1,9 +1,12 @@
 import Image from "next/image"
 import ColombiaFlag from "../assets/colombia.png"
-
-
+import { useCurrentValueDollar } from "@/hooks/useDollar"
 
 function CardDollar() {
+
+    const dollarValue = useCurrentValueDollar() 
+
+
     return (
         <div
             className="
@@ -29,7 +32,7 @@ function CardDollar() {
 
             <p className="bg-green-400 text-white w-[60px] rounded-md px-1" >1 USD</p>
 
-            <h1 className="text-slate-800 w-[90%] text-center text-6xl font-semibold mb-3 lg:text-8xl" >5.000</h1>
+            <h1 className="text-slate-800 w-[90%] text-center text-6xl font-semibold mb-3 lg:text-8xl" >{dollarValue}</h1>
 
             <p className="text-slate-800 italic text-sm lg:w-[80%] text-center self-center" >
                 * Lorem ipsum dolor sit amet consectetur adipisicing elit.
