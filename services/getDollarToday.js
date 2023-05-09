@@ -1,4 +1,4 @@
-export async function useCurrentValueDollar() {
+export async function getCurrentValueDollar() {
 
     let response = undefined;
 
