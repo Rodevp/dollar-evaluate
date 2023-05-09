@@ -1,10 +1,18 @@
+'use client'
 import Image from "next/image"
 import ColombiaFlag from "../assets/colombia.png"
 import { useCurrentValueDollar } from "@/hooks/useDollar"
+import { useEffect, useState } from "react"
 
-async function CardDollar() {
+function CardDollar() {
 
-    const dollarValue = await useCurrentValueDollar() 
+    const [dollarValue, setDollarValue] = useState('0')
+
+    useEffect(() => {
+        useCurrentValueDollar()
+            .then(value => setDollarValue(value))
+            .catch( _ => setDollarValue('0'))
+    }, [])
 
     return (
         <div

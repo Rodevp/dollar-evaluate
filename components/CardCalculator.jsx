@@ -23,13 +23,13 @@ function CardCalculator() {
 
         getDollarForCalculate()
             .then((value) => {
-                setCurrentDollar( value )
+                setCurrentDollar( String( value ) )
             })
             .catch(err => setCurrentDollar('0'))
 
     }, [])
 
-    const value = currentDollar?.replace('.', '')
+    const value =  currentDollar?.replace('.', '')
     
     const resultOperation = Number(currentMoney) * Number(value)
     

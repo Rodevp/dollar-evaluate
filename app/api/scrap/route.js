@@ -30,7 +30,7 @@ export async function GET() {
         const PATH_HISTORY = "./app/api/dollarHistory.txt"
         
         const data = fs.readFileSync(PATH_HISTORY, 'utf8');
-        const history = data.split('\n')
+        const history = data?.split('\n')
 
         if ( history.length >= 60 ) {
             fs.truncate(PATH_HISTORY, 0, function() { console.log('done') } )
