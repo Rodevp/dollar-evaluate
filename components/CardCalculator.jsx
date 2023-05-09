@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 
 const getDollarForCalculate = async () => {
-    const response  = await fetch('http://localhost:3000/api/today')
+    const response  = await fetch('/api/today')
     const data = await response.json()
 
     return data?.value
