@@ -29,7 +29,7 @@ function CardCharts() {
 
     useEffect(() => {
       
-      fetch('http://localhost:3000/api/history/', {
+      fetch('/api/history/', {
         next: {
           revalidate: 60
         }

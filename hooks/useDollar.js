@@ -3,7 +3,7 @@ export async function useCurrentValueDollar() {
     let response = undefined;
 
     try {
-        response = await fetch('http://localhost:3000/api/scrap', {
+        response = await fetch('/api/', {
             next: {
                 revalidate: 5
             }
