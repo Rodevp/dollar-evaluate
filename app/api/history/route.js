@@ -9,7 +9,7 @@ export async function GET() {
     try {
 
         const data = fs.readFileSync(PATH, 'utf8');
-        const history = data.split('\n')
+        const history = data?.split('\n')
         
         return NextResponse.json({
             message: "today value",

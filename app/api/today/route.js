@@ -11,7 +11,7 @@ export async function GET() {
 
         return NextResponse.json({
             message: "today value",
-            value: data.toString()
+            value: data?.toString()
         })
 
     } catch (e) {

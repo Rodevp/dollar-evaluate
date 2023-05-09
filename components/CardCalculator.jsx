@@ -29,7 +29,7 @@ function CardCalculator() {
 
     }, [])
 
-    const value = currentDollar.replace('.', '')
+    const value = currentDollar?.replace('.', '')
     
     const resultOperation = Number(currentMoney) * Number(value)
     

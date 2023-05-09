@@ -15,7 +15,7 @@ export async function GET() {
 
     const valueDollar = scrap('span.exchange-rate')
 
-    const parseDecimal = valueDollar.text().replace(',', '.')
+    const parseDecimal = valueDollar?.text()?.replace(',', '.')
 
     const writeTxt = fs.createWriteStream("./app/api/dollarHistory.txt", { flags: 'a' })
     writeTxt.write(`${parseDecimal}\n`)
