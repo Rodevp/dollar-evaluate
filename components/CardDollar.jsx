@@ -9,14 +9,14 @@ async function CardDollar() {
     return (
         <div
             className="
-    rounded-lg 
-    bg-white p-2 
-    shadow-md
-    w-full h-[45%] bg-clip-border
-    flex flex-col justify-center
-    md:w-[80%] md:px-6
-    lg:w-[75%]
-  ">
+                    rounded-lg 
+                    bg-white p-2 
+                    shadow-md
+                    w-full h-[45%] bg-clip-border
+                    flex flex-col justify-center
+                    md:w-[80%] md:px-6
+                    lg:w-[75%]
+            ">
             <div
                 className="w-[90%] py-1"
             >
