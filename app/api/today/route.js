@@ -1,25 +1,24 @@
 import { NextResponse } from "next/server"
-import fs from "fs"
-
 
 export async function GET() {
 
-    const PATH = "./app/api/dolarToday.txt"
+    const { data, error } = supabase
+        .from('history')
+        .select('*')
 
-    try {
-        const data = fs.readFileSync(PATH, 'utf8');
-
+    if (error) {
         return NextResponse.json({
             message: "today value",
-            value: data?.toString()
-        })
-
-    } catch (e) {
-        return NextResponse.json({
-            message: "today value",
-            value: 0
-        })
+            value: '0'
+        })    
     }
-    
+
+    const dollarToday = data[0]
+
+    return NextResponse.json({
+        message: "today value",
+        value: dollarToday
+    })
+
 
 }
