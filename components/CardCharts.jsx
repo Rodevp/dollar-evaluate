@@ -57,7 +57,7 @@ function CardCharts() {
           },
           title: {
             display: true,
-            text: 'Valores de la ultima hora',
+            text: 'Valores de la ultima horas',
           },
         },
       }
@@ -85,7 +85,11 @@ function CardCharts() {
       <div
         className="w-full h-[45%] rounded-lg p-2 bg-white bg-clip-border shadow-md md:h-[65%]"
       >
-        <Bar options={optionChart} data={dataChart} />
+        {
+          data?.length === 0 
+          ? <p className="text-center text-xl"  >Cargando...</p>
+          : <Bar options={optionChart} data={dataChart} />
+        }
       </div>
     )
   }
