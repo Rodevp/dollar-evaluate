@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import chieero from "cheerio"
-import dotenv from "dotenv" 
-import fs from "fs"
+import dotenv from "dotenv"
+import { supabase } from "@/config/supabase"
 
 dotenv.config()
 
@@ -11,32 +11,43 @@ export async function GET() {
 
     const page = await response.text()
 
-    const scrap = chieero.load( page )
+    const scrap = chieero.load(page)
 
     const valueDollar = scrap('span.exchange-rate')
 
     const parseDecimal = valueDollar?.text()?.replace(',', '.')
 
-    const writeTxt = fs.createWriteStream("./app/api/dollarHistory.txt", { flags: 'a' })
-    writeTxt.write(`${parseDecimal}\n`)
-    writeTxt.end()
+    const { data: today, error } = await supabase
+        .from('today')
+        .select('*')
 
-    const current = fs.createWriteStream("./app/api/dolarToday.txt")
-    current.write(parseDecimal)
-    current.end()
-    
-    try {
+    if (today?.length > 0) {
+        const row = today[0]
 
-        const PATH_HISTORY = "./app/api/dollarHistory.txt"
-        
-        const data = fs.readFileSync(PATH_HISTORY, 'utf8');
-        const history = data?.split('\n')
+        const { error } = await supabase
+            .from('today')
+            .update({ id: row?.id, value: parseDecimal })
 
-        if ( history.length >= 60 ) {
-            fs.truncate(PATH_HISTORY, 0, function() { console.log('done') } )
-        }
+    } else {
+        const { error } = await supabase
+            .from('today')
+            .insert({ value: parseDecimal })
+    }
 
-    } catch (error) {
+    const { error: errorHistory } = await supabase
+        .from('history')
+        .insert({ value: parseDecimal })
+
+    if (error) {
+        console.log('error today', error?.message)
+        return NextResponse.json({
+            message: "value dollar",
+            value: '0'
+        })
+    }
+
+    if (errorHistory) {
+        console.log('error history', errorHistory?.message)
         return NextResponse.json({
             message: "value dollar",
             value: '0'

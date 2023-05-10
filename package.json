@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.21.0",
     "autoprefixer": "10.4.14",
     "chart.js": "^4.3.0",
     "cheerio": "^1.0.0-rc.12",
@@ -16,7 +17,6 @@
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
     "next": "13.4.1",
-    "node-fetch": "^3.3.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
