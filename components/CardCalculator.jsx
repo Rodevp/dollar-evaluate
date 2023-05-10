@@ -6,6 +6,8 @@ const getDollarForCalculate = async () => {
     const response  = await fetch('/api/today')
     const data = await response.json()
 
+    console.log('data today from client -> ', data)
+
     return data?.value
 }
 

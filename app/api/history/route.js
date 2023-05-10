@@ -3,7 +3,7 @@ import { supabase } from "@/config/supabase"
 
 export async function GET() {
 
-    const { data, error } = supabase
+    const { data: history, error } = await supabase
         .from('history')
         .select('*')
 
@@ -16,7 +16,7 @@ export async function GET() {
 
     return NextResponse.json({
         message: "today value",
-        value: data?.map( valueHistory => valueHistory?.value )
+        value: history?.map( valueHistory => valueHistory?.value )
     })
 
 
