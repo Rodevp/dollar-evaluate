@@ -1,39 +1,37 @@
 'use client'
 import { useEffect, useState } from "react"
 
-
-const getDollarForCalculate = async () => {
-    const response  = await fetch('/api/today')
-    const data = await response.json()
-
-    return data?.value
-}
-
-
 function CardCalculator() {
 
     const [currentMoney, setCurrentMoney] = useState('0')
     const [currentDollar, setCurrentDollar] = useState('0')
 
-    const  handleCurrentMoney = (e) => {
+    const handleCurrentMoney = (e) => {
         setCurrentMoney(e.target.value)
     }
 
     useEffect(() => {
+        
+        const id = setTimeout(() => {
+            
+            const currentDollarValue = localStorage.getItem('today')
+            
+            currentDollarValue === null
+                ? setCurrentDollar('0')
+                : setCurrentDollar(currentDollarValue)
+            
+            
+        }, 100)
 
-        getDollarForCalculate()
-            .then((value) => {
-                setCurrentDollar( String( value ) )
-            })
-            .catch(err => setCurrentDollar('0'))
+        return () => clearTimeout(id)
 
     }, [])
 
-    const value =  currentDollar?.replace('.', '')
-    
+    const value = currentDollar?.replace('.', '')
+
     const resultOperation = Number(currentMoney) * Number(value)
-    
-    const resultConvert = Number(resultOperation).toLocaleString("en", {currency: "COP"}) 
+
+    const resultConvert = Number(resultOperation).toLocaleString("en", { currency: "COP" })
 
     return (
         <div
@@ -56,7 +54,7 @@ function CardCalculator() {
             <h3
                 className="text-slate-800 text-2xl mb-2 px-1"
             >
-               Valor: { resultConvert } COP
+                Valor: {resultConvert} COP
             </h3>
         </div>
     )

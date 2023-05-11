@@ -29,14 +29,10 @@ function CardCharts() {
 
     useEffect(() => {
       
-      fetch('/api/history/', {
-        next: {
-          revalidate: 60
-        }
-      })
+      fetch('/api/history/')
         .then(response => response.json())
         .then(valueCharts => {
-          setData( valueCharts?.value?.filter(value => value !== '') )
+          setData( valueCharts?.value )
         })
         .catch(err => {
           setData([])
@@ -44,9 +40,8 @@ function CardCharts() {
 
     }, [])
 
-    const labels = useMemo(() => {
-      return data?.map( value => Number( value?.replace('.', '') ).toLocaleString("en") )
-    }, [data]) 
+    const labels = 
+      data?.map( value => Number( value?.replace('.', '') ).toLocaleString("en") )
 
     const optionChart = useMemo(() => {
       return {
@@ -65,7 +60,7 @@ function CardCharts() {
 
     const datasetData = useMemo(() => {
       return data?.map( value => Number( value?.replace('.', '') ) )
-    }, [data])
+    }, [labels])
 
     const dataChart = useMemo(() => {
       return {

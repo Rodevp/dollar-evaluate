@@ -10,7 +10,10 @@ function CardDollar() {
 
     useEffect(() => {
         getCurrentValueDollar()
-            .then(value => setDollarValue(value))
+            .then(value => {
+                localStorage.setItem('today', value)
+                setDollarValue(value)
+            })
             .catch( _ => setDollarValue('0'))
     }, [])
 
