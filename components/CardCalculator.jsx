@@ -21,7 +21,7 @@ function CardCalculator() {
                 : setCurrentDollar(currentDollarValue)
             
             
-        }, 100)
+        }, 1000)
 
         return () => clearTimeout(id)
 
